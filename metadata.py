@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import random
 import time
 import os
 from progressbar import progressbar
@@ -8,19 +9,19 @@ from copy import deepcopy
 
 
 # Base metadata. MUST BE EDITED.
-BASE_IMAGE_URL = "ipfs://bafybeibe5h5nyvh44mhkuslncvpnwwu6jiai75mhvhnujrzj7j2ppy4puq"
-BASE_NAME = "MultiCourseX Student"
+BASE_IMAGE_URL = "ipfs://bafybeia7zh7mrk4odd3f4bexkip4ckb4fe7fxxlkm22gxzyvi34e5zxeqm"
+BASE_NAME = "MultiCourseX Teacher"
 
 BASE_JSON = {
     "name": BASE_NAME,
-    "description": "MultiCourseX Student NFT",
+    "description": "MultiCourseX Teacher NFT",
     "image": BASE_IMAGE_URL,
     "attributes": [],
 }
 
 def generate_metadata(metadata_path, edition_name):
     numberOfNFTs = len(os.listdir(os.path.join('output', edition_name)))
-    for i in range(1, numberOfNFTs + 1):
+    for i in range(0, numberOfNFTs + 1):
         item_json = deepcopy(BASE_JSON)
 
         item_json['name'] = BASE_NAME + " #" + str(i)
@@ -28,7 +29,7 @@ def generate_metadata(metadata_path, edition_name):
          # Append image PNG file name to base image path
         item_json['image'] = item_json['image'] + '/' + str(i) + '.png'
         # Adding attributes
-        item_json['attributes'].append({ 'trait_type': 'Student Index', 'value': i })
+        item_json['attributes'].append({ 'trait_type': 'Teacher Index', 'value': i })
 
         with open(os.path.join(metadata_path, str(i) + '.json'), 'w') as f:
             json.dump(item_json, f)
@@ -40,6 +41,9 @@ def main():
 
     while True:
         edition_name = input("Enter edition you want to generate metadata for: ")
+        if edition_name == "":
+            print("Oops! Looks like this edition doesn't exist! Check your output folder to see what editions exist.")
+            continue
         edition_path = os.path.join('output', edition_name)
         if os.path.exists(edition_path):
                 print("Edition exists! Generating JSON metadata...")

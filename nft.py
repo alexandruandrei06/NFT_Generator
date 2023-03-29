@@ -33,7 +33,7 @@ def generate_single_image(filepaths, outputFileName, outputDirName):
 
 def generate_filepaths(BasePath, numberOfNFTs):
     filePaths = []
-    for index in range(1, numberOfNFTs + 1):
+    for index in range(0, numberOfNFTs + 1):
         filePath = []
         filePath.append(BasePath)
         for i in range(1, 6):
@@ -43,7 +43,7 @@ def generate_filepaths(BasePath, numberOfNFTs):
 
 def generate_NFTs(filePaths, numberOfNFTs, outputDirName):
     for i in range(0, numberOfNFTs):
-        generate_single_image(filePaths[i], "output/" + outputDirName + "/" + str(i+1) + ".png", outputDirName)
+        generate_single_image(filePaths[i], "output/" + outputDirName + "/" + str(i) + ".png", outputDirName)
 
 def main():
     numberOfNFTs = int(input("Enter the amount of NFTs to generate: "))
