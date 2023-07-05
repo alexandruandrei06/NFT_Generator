@@ -9,7 +9,7 @@ from copy import deepcopy
 
 
 # Base metadata. MUST BE EDITED.
-BASE_IMAGE_URL = "ipfs://bafybeia7zh7mrk4odd3f4bexkip4ckb4fe7fxxlkm22gxzyvi34e5zxeqm"
+BASE_IMAGE_URL = "ipfs://bafybeicpugja5v5spdc27cwzhqxuu3nyfnttrqohrb4hczvw4z5cepadmu"
 BASE_NAME = "MultiCourseX Teacher"
 
 BASE_JSON = {
